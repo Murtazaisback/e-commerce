@@ -6,12 +6,33 @@ import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
 import { RecoverPasswordForm } from './RecoverPasswordForm'
 
 import classes from './index.module.scss'
+import Image from 'next/image'
+import Link from 'next/link'
+import { RenderParams } from '../../_components/RenderParams'
 
 export default async function RecoverPassword() {
   return (
-    <Gutter className={classes.recoverPassword}>
-      <RecoverPasswordForm />
-    </Gutter>
+    <section className={classes.recoverPassword}>
+      <div className={classes.heroImg}>
+        <Link href="/">
+            <Image src="/logo-black.svg" alt="" width={250} height={23} className={classes.logo}/>
+        </Link>
+      </div>
+      <div className={classes.formWrapper}>
+        <div className={classes.formContainer}>
+          <Link href="/login" className={classes.backLink}>
+              <Image src="/assets/icons/arrow-left.svg" alt='left arrow' width={24} height={24}/>
+              <p>Back</p>
+          </Link>
+          <RenderParams className={classes.params}/>
+          <div className={classes.formTitle}>
+            <h3>Forgot password</h3>
+          </div>
+          <RecoverPasswordForm />
+        </div>
+
+      </div>
+    </section>
   )
 }
 
